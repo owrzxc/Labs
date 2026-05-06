@@ -16,7 +16,15 @@ def insert(t, x):
 
 
 def inorder(t):
-    return inorder(t.l) + [t.v] + inorder(t.r) if t else []
+    result = []
+    def traverse(node):
+        if node is None:
+            return
+        traverse(node.l)
+        result.append(node.v)
+        traverse(node.r)
+    traverse(t)
+    return result
 
 
 
