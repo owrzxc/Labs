@@ -16,13 +16,21 @@ def build_graph(cities, storages, pipelines):
 
 
 def dfs(graph, start, visited):
-    if start in visited:
-        return
+    stack = [start]
 
-    visited.add(start)
+    while stack:
+        current = stack.pop()
 
-    for neighbor in graph.get(start, []):
-        dfs(graph, neighbor, visited)
+        if current in visited:
+            continue
+
+        visited.add(current)
+
+        neighbors = graph.get(current, [])
+
+        for neighbor in reversed(neighbors):
+            if neighbor not in visited:
+                stack.append(neighbor)
 
 
 def find_unreachable_cities(cities, storages, pipelines):
