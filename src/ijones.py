@@ -38,11 +38,12 @@ def count_paths(grid: List[str]) -> int:
 
 
 def solve() -> None:
-    import sys
+    with open("ijones.in", "r", encoding="utf-8") as file_in:
+        data = file_in.read().strip().split()
 
-    data = sys.stdin.read().strip().split()
     if not data:
-        print(0)
+        with open("ijones.out", "w", encoding="utf-8") as file_out:
+            file_out.write("0\n")
         return
 
     width = int(data[0])
@@ -55,7 +56,10 @@ def solve() -> None:
     if any(len(row) != width for row in grid):
         raise ValueError("Invalid row width")
 
-    print(count_paths(grid))
+    result = count_paths(grid)
+
+    with open("ijones.out", "w", encoding="utf-8") as file_out:
+        file_out.write(str(result) + "\n")
 
 
 if __name__ == "__main__":
