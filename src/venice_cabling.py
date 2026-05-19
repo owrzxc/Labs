@@ -6,7 +6,6 @@ from typing import List, Tuple
 
 
 class InvalidMatrixError(ValueError):
-    """Raised when the adjacency matrix is invalid."""
 
 
 def read_adjacency_matrix(file_path: str | Path) -> List[List[int]]:
